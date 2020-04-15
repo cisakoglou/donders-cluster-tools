@@ -4,5 +4,7 @@
 
 Add the following to ~/.bashrc file
 >LOGDIR=$HOME/CODE/torque_logs/congrads
+
 >AUTODIR=$HOME/CODE/donders-cluster-tools
+
 >crontab $AUTODIR/jobs
