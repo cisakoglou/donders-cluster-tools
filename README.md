@@ -8,3 +8,6 @@ Add the following to ~/.bashrc file
 >AUTODIR=$HOME/CODE/donders-cluster-tools
 
 >crontab $AUTODIR/jobs
+
+And run 
+source ~/.bashrc to reload
