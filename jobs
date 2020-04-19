@@ -1,1 +1,1 @@
-0 0 * * * $AUTODIR/remove_logs.sh
+0 0 * * * LOGDIR=$HOME/CODE/torque_logs/congrads && rm $LOGDIR/*
