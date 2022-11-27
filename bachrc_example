@@ -1,0 +1,51 @@
+# .bashrc
+
+# Change to homedir
+cd -L
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+LOGDIR=$HOME/CODE/torque_logs/congrads
+AUTODIR=$HOME/CODE/donders-cluster-tools
+crontab -r
+crontab $AUTODIR/jobs
+
+# useful qstat aliases
+alias qstatQ='qstat | grep Q'
+alias qstatR='qstat | grep R'
+alias qstatC='qstat | grep C'
+alias qstats='echo "Running jobs: $(qselect -s R | wc -l)"; echo "Queued jobs: $(qselect -s Q | wc -l)"; echo "Halted jobs: $(qselect -s H | wc -l)"; echo "Completed jobs: $(qselect -s C | wc -l)"'
+alias myshare='cluster-fairshare | grep `whoami`'
+alias delq='qdel $(qselect -s Q)'
+
+alias qstatRn='qstatR | wc -l' # return how many jobs are running
+
+# specify which pycharm module you want to initiate by typing charm
+alias charm='module load pycharm/2021.3.1;echo "pycharm" | qsub -q interactive -l "procs=1, mem=20000mb, walltime=48:00:00"'
+
+# Aliases to facilitate git pipelines
+alias gp='git push'
+alias gc='git commit'
+alias gca='git commit -a'
+alias gcm='git commit -m'
+alias gcam='git commit -am'
+# example of usage: gcam "commit message";gp
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/2021.05/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/2021.05/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/2021.05/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/2021.05/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
