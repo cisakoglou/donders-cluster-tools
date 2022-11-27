@@ -12,5 +12,5 @@ Add the following to ~/.bashrc file
 And run 
 source ~/.bashrc to reload
 
-## Further examples of facilitating your work are contained in the .bashrc example file
+## Further examples of facilitating your work are contained in the bashrc example file
 
